@@ -106,14 +106,12 @@ public class LightweightHub extends Plugin{
             }
         });
 
-        Events.run(Trigger.update, () -> {
-            Groups.player.each(p -> p.unit().moving(), p -> {
-                EffectData effect = config.eventEffects.get("move");
-                if(effect != null){
-                    effect.spawn(p.x, p.y);
-                }
-            });
-        });
+        Events.run(Trigger.update, () -> Groups.player.each(p -> p.unit().moving(), p -> {
+            EffectData effect = config.eventEffects.get("move");
+            if(effect != null){
+                effect.spawn(p.x, p.y);
+            }
+        }));
 
         Events.on(PlayerJoin.class, event -> {
             NetConnection con = event.player.con();
@@ -139,7 +137,7 @@ public class LightweightHub extends Plugin{
         Timer.schedule(() -> {
             CompletableFuture<?>[] tasks = config.servers.stream()
                     .map(data -> CompletableFuture.runAsync(() -> {
-                        // all tasks executes on ForkJoinPool
+                        // all tasks execute on ForkJoinPool
                         Core.app.post(() -> Call.label(data.title, 5f, data.titleX, data.titleY));
                         net.pingHost(data.ip, data.port, host -> {
                             counter.addAndGet(host.players);
