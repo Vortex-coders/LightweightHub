@@ -3,6 +3,7 @@ apply plugin: 'java'
 repositories{
     mavenCentral()
     maven{url 'https://www.jitpack.io'}
+    maven { url = uri("https://maven.xpdustry.fr/releases") }
 }
 
 ext{
@@ -14,6 +15,8 @@ ext{
 dependencies{
     compileOnly "com.github.Anuken.Arc:arc-core:$versions.mindustry"
     compileOnly "com.github.Anuken.Mindustry:core:$versions.mindustry"
+
+    compileOnly("fr.xpdustry:javelin-mindustry:1.2.0")
 
     implementation "com.google.code.gson:gson:$versions.gson"
 }

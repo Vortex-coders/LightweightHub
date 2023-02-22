@@ -24,8 +24,10 @@ public class HostData{
     public int labelX;
     /** The latter <b>Y</b> coordinate of the status label. */
     public int labelY;
+    /** Discord id for server. */
+    public long discord;
 
-    public HostData(int port, int size, int teleportX, int teleportY, int titleX, int titleY, int labelX, int labelY){
+    public HostData(int port, int size, int teleportX, int teleportY, int titleX, int titleY, int labelX, int labelY, long discord){
         this.port = port;
         this.size = size;
         this.teleportX = teleportX;
@@ -34,6 +36,7 @@ public class HostData{
         this.titleY = titleY;
         this.labelX = labelX;
         this.labelY = labelY;
+        this.discord = discord;
     }
 
     public boolean inDiapason(int x, int y){
